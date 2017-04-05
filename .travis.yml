@@ -19,5 +19,6 @@ script:
     docker push kholodovitch/marketing-personal-banner;
     fi
   - if [ "$TRAVIS_BRANCH" == "develop" ]; then
+    docker tag kholodovitch/marketing-personal-banner kholodovitch/marketing-personal-banner:dev;
     docker push kholodovitch/marketing-personal-banner:dev;
     fi

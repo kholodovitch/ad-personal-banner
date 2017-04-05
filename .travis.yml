@@ -1,0 +1,19 @@
+language: java
+sudo: required
+
+services:
+  - docker
+
+branches:
+  only:
+    - master
+    - develop
+
+jdk:
+  - oraclejdk8
+
+script: mvn package docker:build
+
+after_success:
+  - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";
+  - docker push kholodovitch/marketing-personal-banner;

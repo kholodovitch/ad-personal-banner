@@ -9,8 +9,3 @@ build:
 
   post_ci:
     - docker push kholodvitch/marketing-personal-banner
-
-integrations:
-  hub:
-    - integrationName: docker
-      type: docker

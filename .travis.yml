@@ -12,8 +12,12 @@ branches:
 jdk:
   - oraclejdk8
 
-script: mvn package docker:build
-
-after_success:
+script:
+  - mvn package docker:build
   - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";
-  - docker push kholodovitch/marketing-personal-banner;
+  - if [ "$TRAVIS_BRANCH" == "master" ]; then
+    docker push kholodovitch/marketing-personal-banner;
+    fi
+  - if [ "$TRAVIS_BRANCH" == "develop" ]; then
+    docker push kholodovitch/marketing-personal-banner:dev;
+    fi
